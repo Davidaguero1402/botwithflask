@@ -1,0 +1,33 @@
+@startuml Diagrama de Clases
+
+class Usuario {
+    - balance: float
+    - apiKey: str
+    - secretkey: str
+    + __init__(apiKey: str, secretkey: str)
+    + get_balance(): float
+}
+
+class Activo {
+    - usuario: Usuario
+    - time: list
+    - prices: list
+    - ticket: list
+    - macd: list
+    - rsi: list
+    - ema: list
+    - signal: list
+    + __init__(usuario: Usuario)
+    + get_last_30_closes(): list
+    + get_ticket(): float
+    + calc_rsi(): float
+    + calc_ema(symbol: str, timeframe: str, period: int, apiKey: str, secret: str, activo: Activo): float
+    + calc_ema_for_mcd(symbol: str, timeframe: str, period: int, activo: Activo): float
+    + calc_macd(activo: Activo): float
+    + vender()
+    + comprar()
+}
+
+Usuario "1" *--- "1" Activo
+
+@enduml
