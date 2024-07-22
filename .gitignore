@@ -1,7 +1,6 @@
 .vercel
 .venv
 __pycache__
-.env
+/.env
 migrations
 *.drawio
-.env
