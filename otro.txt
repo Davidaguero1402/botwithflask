@@ -1,2 +1,0 @@
-apikey = TYE7DEnkdV3ouAKZXCbFjfjkdlcomL16vnC9wjP9xvk2iR7BZwDpVcI4b5QFKhDIKVf0RPCOk7xgSe0z4QA
-secret key = bywgZ59Ca2JTTioImEcEA1jb3i0lnwhLHiyHvTJzgS6qthk2uvBYP26EGRRFtz5BVLmTzEj4qNji1tgmxg8w

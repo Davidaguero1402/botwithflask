@@ -1,33 +1,66 @@
-@startuml Diagrama de Clases
-
-class Usuario {
-    - balance: float
-    - apiKey: str
-    - secretkey: str
-    + __init__(apiKey: str, secretkey: str)
-    + get_balance(): float
+@startuml
+entity Usuario {
+    ID int primary key
+    Nombre varchar
+    Apellido varchar
+    Email varchar
+    Balance decimal
+    Autenticacion varchar
 }
 
-class Activo {
-    - usuario: Usuario
-    - time: list
-    - prices: list
-    - ticket: list
-    - macd: list
-    - rsi: list
-    - ema: list
-    - signal: list
-    + __init__(usuario: Usuario)
-    + get_last_30_closes(): list
-    + get_ticket(): float
-    + calc_rsi(): float
-    + calc_ema(symbol: str, timeframe: str, period: int, apiKey: str, secret: str, activo: Activo): float
-    + calc_ema_for_mcd(symbol: str, timeframe: str, period: int, activo: Activo): float
-    + calc_macd(activo: Activo): float
-    + vender()
-    + comprar()
+entity Banco {
+    ID int primary key
+    Nombre varchar
+    Cuenta varchar
+    Usuario_ID int
 }
 
-Usuario "1" *--- "1" Activo
+entity Exchange {
+    ID int primary key
+    Nombre varchar
+    API_Key varchar
+    Secret_Key varchar
+}
+
+entity Bot {
+    ID int primary key
+    Usuario_ID int
+    Exchange_ID int
+    Activo_ID int
+    Estrategia_ID int
+}
+
+entity Estrategia {
+    ID int primary key
+    Nombre varchar
+    Descripcion text
+    Parametros text
+}
+
+entity Activo {
+    ID int primary key
+    Nombre varchar
+    Simbolo varchar
+    Tipo varchar
+}
+
+entity Operacion {
+    ID int primary key
+    Bot_ID int
+    Activo_ID int
+    TipoOperacion varchar  // "Compra" o "Venta"
+    Precio decimal
+    Cantidad decimal
+    Fecha datetime
+}
+
+Usuario ||--o{ Banco : tiene
+Usuario ||--o{ Bot : controla
+Bot }o--|| Usuario : pertenece
+Bot }o--|| Exchange : opera
+Bot }o--|| Activo : opera
+Bot }o--|| Estrategia : utiliza
+Bot ||--o{ Operacion : realiza
+Activo ||--o{ Operacion : está_involucrado
 
 @enduml
