@@ -17,7 +17,7 @@ class UsuariosModelTestCase(unittest.TestCase):
             apellido='Perez',
             email='juan.perez@example.com',
             balance=100.0,
-            autenticacion='token123'
+            role="Admin" 
         )
         db.session.add(self.usuario)
         db.session.commit()
@@ -35,7 +35,7 @@ class UsuariosModelTestCase(unittest.TestCase):
         self.assertEqual(usuario.apellido, 'Perez')
         self.assertEqual(usuario.email, 'juan.perez@example.com')
         self.assertEqual(usuario.balance, 100.0)
-        self.assertEqual(usuario.autenticacion, 'token123')
+        self.assertEqual(usuario.role, 'Admin')
 
     def test_usuario_update(self):
         # Actualiza y verifica los cambios en el usuario

@@ -22,7 +22,7 @@ class OperacionesModelTestCase(unittest.TestCase):
             apellido='Perez',
             email='juan.perez@example.com',
             balance=100.0,
-            autenticacion='token123'
+            role='User'
         )
         db.session.add(self.usuario)
         db.session.commit()

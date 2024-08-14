@@ -1,0 +1,68 @@
+@startuml
+!define RECTANGLE class
+
+RECTANGLE Usuario {
+  + GET /usuarios [Admin]
+  + GET /usuarios/{id} [Auth User]
+  + POST /usuarios [Public]
+  + PUT /usuarios/{id} [Auth User]
+  + DELETE /usuarios/{id} [Admin]
+}
+
+RECTANGLE Banco {
+  + GET /bancos [Admin]
+  + GET /bancos/{id} [Auth User]
+  + POST /bancos [Admin]
+  + PUT /bancos/{id} [Admin]
+  + DELETE /bancos/{id} [Admin]
+}
+
+RECTANGLE Exchange {
+  + GET /exchanges [Admin]
+  + GET /exchanges/{id} [Auth User]
+  + POST /exchanges [Admin]
+  + PUT /exchanges/{id} [Admin]
+  + DELETE /exchanges/{id} [Admin]
+}
+
+RECTANGLE Bot {
+  + GET /bots [Auth User]
+  + GET /bots/{id} [Auth User]
+  + POST /bots [Auth User]
+  + PUT /bots/{id} [Auth User]
+  + DELETE /bots/{id} [Admin]
+}
+
+RECTANGLE Estrategia {
+  + GET /estrategias [Auth User]
+  + GET /estrategias/{id} [Auth User]
+  + POST /estrategias [Admin]
+  + PUT /estrategias/{id} [Admin]
+  + DELETE /estrategias/{id} [Admin]
+}
+
+RECTANGLE Activo {
+  + GET /activos [Auth User]
+  + GET /activos/{id} [Auth User]
+  + POST /activos [Admin]
+  + PUT /activos/{id} [Admin]
+  + DELETE /activos/{id} [Admin]
+}
+
+RECTANGLE Operacion {
+  + GET /operaciones [Auth User]
+  + GET /operaciones/{id} [Auth User]
+  + POST /operaciones [Auth User]
+  + PUT /operaciones/{id} [Admin]
+  + DELETE /operaciones/{id} [Admin]
+}
+
+Usuario --> Banco : tiene
+Usuario --> Bot : controla
+Bot --> Usuario : pertenece
+Bot --> Exchange : opera
+Bot --> Activo : opera
+Bot --> Estrategia : utiliza
+Bot --> Operacion : realiza
+Activo --> Operacion : está involucrado
+@enduml
