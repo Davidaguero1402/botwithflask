@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  botwithflask:
+    image: botwithflask:latest
+    ports:
+      - 8000:5000  # Mapeo de puertos:
+                   # 8000 es el puerto en el host (tu sistema operativo).
+                   # 5000 es el puerto dentro del contenedor donde corre la app Flask.

@@ -12,7 +12,7 @@ COPY ./app.py .
 COPY ./requirements.txt .
 COPY ./pricebtc.py .
 
-# on las siguientes dos lineas he creado un nuevo directorio en mi contenedor que es donde
+# en las siguientes dos lineas he creado un nuevo directorio en mi contenedor que es donde
 # necesito guardar el dashboard
 RUN mkdir -p templates
 COPY ./templates/dashboard.html templates/
